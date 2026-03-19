@@ -65,12 +65,18 @@ public class EmployeeBusiness {
         }
     }
 
-    public void searchEmployee(String empId) {
-        List<Employee> search = new ArrayList<>();
+    public void searchEmployee(String empName) {
+        List<Employee> result = new ArrayList<>();
         for (Employee e : employee) {
-            if (e.getEmpId().equalsIgnoreCase(empId)) {
-
+            if (e.getEmpName().toLowerCase().contains(empName.toLowerCase())) {
+                result.add(e);
             }
+        }
+        if (result.isEmpty()) {
+            System.out.println("Khong tim thay nhan vien");
+        } else {
+            System.out.println("Ket qua tim kiem: ");
+            result.forEach(Employee::displayData);
         }
     }
 
